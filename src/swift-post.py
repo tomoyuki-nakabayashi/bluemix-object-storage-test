@@ -12,14 +12,14 @@ def swift_auth():
                 ],
                 "password": {
                     "user": {
-                        "id": "b3c26c9b0a3f47a584211908c643812a",
-                        "password": "L2yLC~BZ[H/Mzd~1"
+                        "id": "",
+                        "password": ""
                     }
                 }
             },
             "scope": {
                 "project": {
-                    "id": "c281af0f80fc4410a02dfe9167a3f284"
+                    "id": ""
                 }
             }
         }

@@ -2,6 +2,9 @@
 # -*- coding: utf-8 -*-
 
 import paho.mqtt.client as mqtt
+import postDarkVision as postdv
+
+videofile = "waterfall-free-video1.mp4"
 
 broker = ""
 organization = "mf14an"     # 6桁の「組織ID」を指定します
@@ -17,6 +20,10 @@ def on_connect(client, userdata, flags, rc):
 
 def on_message(client, userdata, msg):
     print(msg.topic+" "+str(msg.payload))
+
+    print("video uploading...")
+    notifyURL = postdv.postDarkVision(videofile)
+    postdv.postNotification(notifyURL)
 
 clientID = "a:" + organization + ":" + applId
 broker = organization + ".messaging.internetofthings.ibmcloud.com"

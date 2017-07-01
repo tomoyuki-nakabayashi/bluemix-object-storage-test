@@ -4,7 +4,6 @@ import requests
 DARK_VISION_BASE = "https://openwhisk-darkvisionapp-ics.mybluemix.net/"
 DARK_VISION_UPLOAD = "upload"
 DARK_VISION_VIDEO = "#!/videos/"
-
 BM_NOTIFICATION = "https://iot-platform-ics.mybluemix.net/notification"
 
 def postDarkVision(videofile):
@@ -14,21 +13,15 @@ def postDarkVision(videofile):
         "language_model": ("", "en-US_BroadbandModel")
     }
 
-#    multipart_form_data = {
-#        "file": ("agent", open('agent.jpg', 'rb'), "image/jpeg")
-#    }
-
     upload_url = DARK_VISION_BASE + DARK_VISION_UPLOAD
     r = requests.post(upload_url, files = multipart_form_data)
 
-    print (r.text)
     print ("URL: " + DARK_VISION_BASE + DARK_VISION_VIDEO + r.json()['id'])
     return DARK_VISION_BASE + DARK_VISION_VIDEO + r.json()['id']
 
 def postNotification(notifyURL):
-#    notifyURL = "https://openwhisk-darkvisionapp-ics.mybluemix.net/#!/videos/" + r.json()['id']
     headers={'Content-Type': 'application/json'}
-    data='{"URL": %s}' % (notifyURL)
+    data='{"URL": "%s"}' % (notifyURL)
     r = requests.post(BM_NOTIFICATION, data=data, headers=headers)
 
     print (r.text)
